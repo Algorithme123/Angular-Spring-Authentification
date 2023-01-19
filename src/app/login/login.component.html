@@ -1,1 +1,19 @@
-<p>login works!</p>
+<div class="container mt-5">
+        <div class="card"> 
+        
+                <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                        <div class="mb-3">
+                                <input ngModel type="text" class="form-control mb-3" id="userName" name="username"  placeholder="Enter your Username">
+                        </div>
+                        <div class="mb-3">
+                                <input ngModel type="password" class="form-control mb-3" id="userPassword" name="userPassword"  placeholder="Enter your Password">
+                        </div>
+                        
+                        <div class="mb-3">
+                                <input  type="submit" value="Login" class="btn btn-outline-primary form-control rounded-0" id="userPassword" name="userPassword" >
+                        </div>
+                
+                </form>
+        
+        </div>
+</div>
