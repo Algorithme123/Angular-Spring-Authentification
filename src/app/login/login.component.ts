@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +9,28 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor( private userService : UserService) { }
 
   ngOnInit(): void {
   }
 
 
 login(loginForm: NgForm){
-console.log("Formulaire envoyer");
-console.log(loginForm.value);
+
+  this.userService.login(loginForm.value).subscribe(
+    (response)=>{
+    
+      console.log(loginForm.value)
+      console.log(response);
+    },
+    (error)=>{
+      console.log(loginForm.value)
+    
+      console.log(error);
+    }
+  )
+
 }
 }
+
+ 
