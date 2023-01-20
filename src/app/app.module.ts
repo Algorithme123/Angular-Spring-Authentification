@@ -9,9 +9,12 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,15 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule 
   ],
-  providers: [],
+  providers: [
+    AuthGuard,
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass:AuthInterceptor,
+      multi: true
+    },
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
