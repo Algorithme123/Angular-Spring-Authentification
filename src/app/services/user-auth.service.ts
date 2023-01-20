@@ -14,8 +14,8 @@ export class UserAuthService {
 
 
 
-  public getRoles(): [] {
-    return JSON.parse(localStorage.getItem('roles'));
+  public getRoles() {
+    return localStorage.getItem('roles');
   }
 
 
@@ -25,7 +25,7 @@ export class UserAuthService {
   }
 
 
-  public getToken(): string {
+  public getToken() {
     return localStorage.getItem('jwtToken');
   }
 
