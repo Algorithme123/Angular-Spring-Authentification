@@ -25,16 +25,17 @@ login(loginForm: NgForm){
   this.userService.login(loginForm.value).subscribe(
     (response : any)=>{
     
-      // // console.log(loginForm.value)
+      // console.log(loginForm.value)
+      // console.log(response.user);
       // console.log(response.jwtToken);
-      // console.log(response.user.role);
+      console.log(response.user.role[0].roleName);
       
       this.userAuthService.setRoles(response.user.role);
       this.userAuthService.setToken(response.token);
       
       const role = response.user.role[0].roleName;
       
-      if(role=== "Admin"){
+      if(role === 'Admin'){
           this.router.navigate(['/admin']);
       }else{
       
@@ -42,17 +43,13 @@ login(loginForm: NgForm){
       
       }
       
-      
-      
-      
-      
     },
     (error)=>{
-      console.log(loginForm.value)
+      // console.log(loginForm.value) 
     
       console.log(error);
     }
-  )
+  );
 
 }
 }

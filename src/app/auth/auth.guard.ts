@@ -15,20 +15,25 @@ export class AuthGuard implements CanActivate {
   
   canActivate(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    state: RouterStateSnapshot):
+    
+      |Observable<boolean | UrlTree>
+      | Promise<boolean | UrlTree>
+      | boolean | UrlTree 
+    {
     // return true;
     
-    if(this.userAuthService.getToken()!==null){
-      const role = route.data["roles"] as Array<string>;
+    if(this.userAuthService.getToken()!== null){
+      const role = route.data['roles'] as Array<string>;
       
       if(role){
          const match =  this.userService.roleMatch(role);
          if(match){
-         return true;
+            return true;
          }else{
-         this.router.navigate(['/forbidden']);
+            this.router.navigate(['/forbidden']);
          
-         return false;
+            return false;
          }
       
          

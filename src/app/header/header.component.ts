@@ -18,8 +18,6 @@ export class HeaderComponent implements OnInit {
   
   }
   
-  
-  
   public isLoggedIn(){
     
     return this.userAuthService.isLoggedIn();
@@ -28,7 +26,7 @@ export class HeaderComponent implements OnInit {
   
   public logout(){
     this.userAuthService.clear();
-    this.router.navigate(['home']);
+    this.router.navigate(['/home']);
   
   }
 
